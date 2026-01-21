@@ -10,3 +10,11 @@ for letter in characters[ : password_length]:
     password += letter
 
 print(password)
+
+'''
+PASWORD GENERATOR
+
+PASSWORD VALUE - default value '!Pa$$w0rd!'
+
+[generate password]
+'''
