@@ -2,14 +2,12 @@ import random
 import tkinter as tk
 
 
-PWD_LENGHT = 15
-
 def password_generator():
     password = ''
     characters = [chr(i) for i in range(33, 127)]
     random.shuffle(characters)
 
-    for letter in characters[ : PWD_LENGHT]:
+    for letter in characters[ : scl_password_lenght_var.get()]:
         password += letter
     lbl_password_var.set(password)
 
@@ -34,5 +32,14 @@ btn_generate_pwd = tk.Button(root,
                              command=password_generator)
 btn_generate_pwd.pack(padx=10, pady=15)
 
+scl_password_lenght_var = tk.IntVar(root, 10)
+scl_password_lenght = tk.Scale(root,
+                               length=300,
+                               from_= 8,
+                               to= 40,
+                               orient='horizontal',
+                               font=('Verdana', 18),
+                               variable=scl_password_lenght_var)
+scl_password_lenght.pack(padx=10, pady=15)
 
 root.mainloop()
