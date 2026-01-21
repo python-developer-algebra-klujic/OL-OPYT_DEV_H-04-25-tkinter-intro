@@ -2,11 +2,11 @@ import os
 import tkinter as tk
 
 
-def btn_clicked():
-    print('Gumb je kliknut.')
+def increment():
+    lbl_counter_var.set(lbl_counter_var.get() + 1)
 
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+def decrement():
+    lbl_counter_var.set(lbl_counter_var.get() - 1)
 
 
 root = tk.Tk()
@@ -23,16 +23,22 @@ lbl_subtitle = tk.Label(root,
 lbl_subtitle.pack(padx=10, pady=10)
 
 
-btn_click = tk.Button(root,
-                      text='Increment (+)',
-                      font=('Verdana', 14),
-                      command=btn_clicked)
-btn_click.pack(padx=10, pady=10)
+btn_increment = tk.Button(root,
+                          text='Increment (+)',
+                          font=('Verdana', 14),
+                          command=increment)
+btn_increment.pack(padx=10, pady=10)
+btn_decrement = tk.Button(root,
+                          text='Decrement (-)',
+                          font=('Verdana', 14),
+                          command=decrement)
+btn_decrement.pack(padx=10, pady=10)
 
-btn_clear_terminal = tk.Button(root,
-                              text='Decrement (-)',
-                              font=('Verdana', 14),
-                              command=clear_terminal)
-btn_clear_terminal.pack(padx=10, pady=10)
+lbl_counter_var = tk.DoubleVar(root, 0)
+lbl_counter = tk.Label(root,
+                       textvariable=lbl_counter_var,
+                       font=('Verdana', 25))
+lbl_counter.pack(padx=10, pady=10)
+
 
 root.mainloop()
