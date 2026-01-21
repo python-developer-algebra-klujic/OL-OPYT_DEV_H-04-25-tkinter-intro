@@ -24,13 +24,13 @@ lbl_subtitle.pack(padx=10, pady=10)
 
 
 btn_click = tk.Button(root,
-                      text='Klikni me!',
+                      text='Increment (+)',
                       font=('Verdana', 14),
                       command=btn_clicked)
 btn_click.pack(padx=10, pady=10)
 
 btn_clear_terminal = tk.Button(root,
-                              text='Ocisti terminal',
+                              text='Decrement (-)',
                               font=('Verdana', 14),
                               command=clear_terminal)
 btn_clear_terminal.pack(padx=10, pady=10)
