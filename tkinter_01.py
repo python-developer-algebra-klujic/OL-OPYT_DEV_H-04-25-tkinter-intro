@@ -1,8 +1,12 @@
+import os
 import tkinter as tk
 
 
 def btn_clicked():
     print('Gumb je kliknut.')
+
+def clear_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 root = tk.Tk()
@@ -25,5 +29,10 @@ btn_click = tk.Button(root,
                       command=btn_clicked)
 btn_click.pack(padx=10, pady=10)
 
+btn_clear_terminal = tk.Button(root,
+                              text='Ocisti terminal',
+                              font=('Verdana', 14),
+                              command=clear_terminal)
+btn_clear_terminal.pack(padx=10, pady=10)
 
 root.mainloop()
