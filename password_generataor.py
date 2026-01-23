@@ -59,23 +59,39 @@ def save_password():
 
 def reset_password():
     lbl_password_var.set('Generate new password')
+    scl_password_lenght_var.set(10)
+    ck_chars_var.set(False)
+    ck_letters_var.set(False)
+    ck_numbers_var.set(False)
 
 
 
 root = tk.Tk()
 root.title('Password Generator')
-root.geometry('900x400')
+# root.geometry('900x400')
+
+
 
 lbl_title = tk.Label(root,
                      text='Python Generator',
                      font=('Verdana', 20))
 lbl_title.grid(column=0, columnspan=3, row=0, padx=10, pady=10, ipadx=5, ipady=5)
 
+
+
 lbl_password_var = tk.StringVar(root, '!Pa$$w0rd!')
-lbl_password = tk.Label(root,
+lbl_password = tk.Entry(root,
                         textvariable=lbl_password_var,
+                        justify='center',
+                        width=45,
+                        background='systembuttonface',
+                        border=0,
+                        show='*', # Omoguciti izbor nakon pauze!!!
                         font=('Verdana', 25))
 lbl_password.grid(column=0, columnspan=3, row=1, padx=10, pady=10, ipadx=5, ipady=5)
+
+
+
 
 btn_generate_pwd = tk.Button(root,
                              text='generate',
@@ -94,6 +110,7 @@ btn_reset_pwd = tk.Button(root,
 btn_reset_pwd.grid(column=2, row=2, padx=10, pady=10, ipadx=5, ipady=5)
 
 
+
 scl_password_lenght_var = tk.IntVar(root, 10)
 scl_password_lenght = tk.Scale(root,
                                length=300,
@@ -103,6 +120,8 @@ scl_password_lenght = tk.Scale(root,
                                font=('Verdana', 18),
                                variable=scl_password_lenght_var)
 scl_password_lenght.grid(column=0, columnspan=3, row=3, padx=10, pady=10, ipadx=5, ipady=5)
+
+
 
 # Izbor kompleksnosti passworda
 # samo brojevi
