@@ -56,6 +56,9 @@ def save_password():
     root.clipboard_clear()
     root.clipboard_append(lbl_password_var.get())
 
+    with open('my_passwords.secured', 'a') as file_writer:
+        file_writer.write(lbl_password_var.get() + '\n')
+
 
 def reset_password():
     lbl_password_var.set('Generate new password')
@@ -70,6 +73,11 @@ def toggle_password():
         lbl_password.config(show='')
     else:
         lbl_password.config(show='*')
+
+
+def exit_app():
+    # root.quit()
+    root.destroy()
 
 
 
@@ -105,7 +113,7 @@ btn_generate_pwd = tk.Button(root,
                              command=password_generator)
 btn_generate_pwd.grid(column=0, row=2, padx=10, pady=10, ipadx=5, ipady=5)
 btn_save_pwd = tk.Button(root,
-                         text='save',
+                         text='copy & save',
                          font=('Verdana', 18),
                          command=save_password)
 btn_save_pwd.grid(column=1, row=2, padx=10, pady=10, ipadx=5, ipady=5)
@@ -164,6 +172,14 @@ rb_hide_pwd = tk.Radiobutton(lbl_settings_frame,
                              command=toggle_password)
 rb_hide_pwd.grid(column=2, row=1, padx=10, pady=10, ipadx=5, ipady=5)
 
+
+
+
+btn_exit_app = tk.Button(root,
+                         text='Exit app',
+                         font=('Verdana', 16),
+                         command=exit_app)
+btn_exit_app.grid(column=1, row=5, padx=10, pady=10, ipadx=5, ipady=5)
 
 
 
