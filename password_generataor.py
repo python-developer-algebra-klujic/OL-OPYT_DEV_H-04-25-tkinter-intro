@@ -12,29 +12,29 @@ def password_generator():
     pwd_lenght = scl_password_lenght_var.get()
 
     characters = list(range(33, 47))
-    characters.extend(list(range(58, 64)))
-    characters.extend(list(range(91, 96)))
-    characters.extend(list(range(123, 126)))
+    characters.extend(list(range(58, 64+1)))
+    characters.extend(list(range(91, 96+1)))
+    characters.extend(list(range(123, 126+1)))
     random.shuffle(characters)
     all_characters = [chr(i) for i in characters]
 
-    numbers = list(range(48, 57))
-    random.shuffle(numbers)
+    numbers = list(range(48, 57+1))
+    # random.shuffle(numbers)
     all_numbers = [chr(i) for i in numbers]
 
-    letters = list(range(65, 90))
-    letters.extend(list(range(97, 122)))
+    letters = list(range(65, 90+1))
+    letters.extend(list(range(97, 122+1)))
     random.shuffle(letters)
     all_letters = [chr(i) for i in letters]
 
     if ck_chars_var.get():
-        for letter in all_characters[ : pwd_lenght]:
-            password += letter
+        for char in all_characters[ : pwd_lenght]:
+            password += char
         lbl_password_var.set(password)
 
     if ck_numbers_var.get():
-        for letter in all_numbers[ : pwd_lenght]:
-            password += letter
+        for _ in range(pwd_lenght):
+            password += random.choice(all_numbers)
         lbl_password_var.set(password)
 
     if ck_letters_var.get():
@@ -64,7 +64,7 @@ def reset_password():
 
 root = tk.Tk()
 root.title('Password Generator')
-root.geometry('600x400')
+root.geometry('900x400')
 
 lbl_title = tk.Label(root,
                      text='Python Generator',
