@@ -65,6 +65,13 @@ def reset_password():
     ck_numbers_var.set(False)
 
 
+def toggle_password():
+    if toggle_password_var.get() == 'display':
+        lbl_password.config(show='')
+    else:
+        lbl_password.config(show='*')
+
+
 
 root = tk.Tk()
 root.title('Password Generator')
@@ -148,7 +155,20 @@ ck_chars = tk.Checkbutton(lbl_settings_frame,
 ck_chars.grid(column=2, row=0, padx=10, pady=10, ipadx=5, ipady=5)
 
 
+toggle_password_var = tk.StringVar(value='hide')
+rb_display_pwd = tk.Radiobutton(lbl_settings_frame,
+                                text='Prikazi password',
+                                variable=toggle_password_var,
+                                value='display',
+                                command=toggle_password)
+rb_display_pwd.grid(column=0, row=1, padx=10, pady=10, ipadx=5, ipady=5)
 
+rb_hide_pwd = tk.Radiobutton(lbl_settings_frame,
+                             text='Sakrij password',
+                             variable=toggle_password_var,
+                             value='hide',
+                             command=toggle_password)
+rb_hide_pwd.grid(column=2, row=1, padx=10, pady=10, ipadx=5, ipady=5)
 
 
 
