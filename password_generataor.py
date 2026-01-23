@@ -75,7 +75,6 @@ def toggle_password():
 
 root = tk.Tk()
 root.title('Password Generator')
-# root.geometry('900x400')
 
 
 
@@ -129,11 +128,6 @@ scl_password_lenght = tk.Scale(root,
 scl_password_lenght.grid(column=0, columnspan=3, row=3, padx=10, pady=10, ipadx=5, ipady=5)
 
 
-
-# Izbor kompleksnosti passworda
-# samo brojevi
-# brojevi i slova
-# sve
 
 lbl_settings_frame = tk.LabelFrame(root, text='Postavke')
 lbl_settings_frame.grid(column=0, columnspan=3, row=4, padx=10, pady=10, ipadx=5, ipady=5)
