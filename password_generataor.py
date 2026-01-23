@@ -3,13 +3,53 @@ import tkinter as tk
 
 
 def password_generator():
-    password = ''
-    characters = [chr(i) for i in range(33, 127)]
-    random.shuffle(characters)
+    # posebni znakovi   33-47 | 58-64 | 91-96 | 123 - 126
+    # brojevi           48-57
+    # slova             65-90 | 97-122
+    # sve               33-126
 
-    for letter in characters[ : scl_password_lenght_var.get()]:
-        password += letter
-    lbl_password_var.set(password)
+    password = ''
+    pwd_lenght = scl_password_lenght_var.get()
+
+    characters = list(range(33, 47))
+    characters.extend(list(range(58, 64)))
+    characters.extend(list(range(91, 96)))
+    characters.extend(list(range(123, 126)))
+    random.shuffle(characters)
+    all_characters = [chr(i) for i in characters]
+
+    numbers = list(range(48, 57))
+    random.shuffle(numbers)
+    all_numbers = [chr(i) for i in numbers]
+
+    letters = list(range(65, 90))
+    letters.extend(list(range(97, 122)))
+    random.shuffle(letters)
+    all_letters = [chr(i) for i in letters]
+
+    if ck_chars_var.get():
+        for letter in all_characters[ : pwd_lenght]:
+            password += letter
+        lbl_password_var.set(password)
+
+    if ck_numbers_var.get():
+        for letter in all_numbers[ : pwd_lenght]:
+            password += letter
+        lbl_password_var.set(password)
+
+    if ck_letters_var.get():
+        for letter in all_letters[ : pwd_lenght]:
+            password += letter
+        lbl_password_var.set(password)
+
+    if not ck_chars_var.get() and not ck_letters_var.get() and not ck_numbers_var.get():
+        complex_pwd = list(range(33, 126))
+        random.shuffle(complex_pwd)
+        all_complex_pwd = [chr(i) for i in complex_pwd]
+
+        for letter in all_complex_pwd[ : pwd_lenght]:
+            password += letter
+        lbl_password_var.set(password)
 
 
 def save_password():
@@ -71,6 +111,28 @@ scl_password_lenght.grid(column=0, columnspan=3, row=3, padx=10, pady=10, ipadx=
 
 lbl_settings_frame = tk.LabelFrame(root, text='Postavke')
 lbl_settings_frame.grid(column=0, columnspan=3, row=4, padx=10, pady=10, ipadx=5, ipady=5)
+
+ck_numbers_var = tk.BooleanVar()
+ck_numbers = tk.Checkbutton(lbl_settings_frame,
+                            text='Brojevi',
+                            variable=ck_numbers_var)
+ck_numbers.grid(column=0, row=0, padx=10, pady=10, ipadx=5, ipady=5)
+ck_letters_var = tk.BooleanVar()
+ck_letters = tk.Checkbutton(lbl_settings_frame,
+                            text='Slova',
+                            variable=ck_letters_var)
+ck_letters.grid(column=1, row=0, padx=10, pady=10, ipadx=5, ipady=5)
+ck_chars_var = tk.BooleanVar()
+ck_chars = tk.Checkbutton(lbl_settings_frame,
+                          text='Znakovi',
+                          variable=ck_chars_var)
+ck_chars.grid(column=2, row=0, padx=10, pady=10, ipadx=5, ipady=5)
+
+
+
+
+
+
 
 
 root.mainloop()
